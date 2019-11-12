@@ -29,4 +29,7 @@ export class LoginComponent implements OnInit {
       this.submitted = true;
     });
   }
+  register() {
+   alert('Register function coming soon');
+  }
 }
