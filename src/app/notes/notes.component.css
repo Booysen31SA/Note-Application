@@ -24,7 +24,7 @@ h2{
 .notes li:hover {
   color: #039be5;
   background-color: #DDD;
-  left: 50px;
+  /* left: 50px; */
 }
 .notes li.selected {
   background-color: #CFD8DC;
