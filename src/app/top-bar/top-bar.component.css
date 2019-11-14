@@ -3,11 +3,16 @@
 h1 {
   font-size: 1.2em;
   margin-bottom: 0;
+  margin-left: 50px;
 }
 h2 {
   font-size: 2em;
   margin-top: 0;
   padding-top: 0;
+
+}
+nav{
+  margin-left: 50px;
 }
 nav a {
   padding: 5px 10px;
@@ -16,6 +21,7 @@ nav a {
   display: inline-block;
   background-color: #eee;
   border-radius: 4px;
+
 }
 nav a:visited, a:link {
   color: #334953;

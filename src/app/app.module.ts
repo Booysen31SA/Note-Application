@@ -7,6 +7,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { HttpClientModule, HttpClientJsonpModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NotesComponent } from './notes/notes.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppComponent,
     LoginComponent,
     TopBarComponent,
-    DashboardComponent
+    DashboardComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,109 @@
+h2{
+  margin-left: 50px;
+}
+.body{
+  margin-left: 50px;
+}
+.notes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 250px;
+  margin-left: 40px;
+}
+.notes li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: 10px;
+  padding: 4px 0 0 0;
+  height: 30px;
+  border-radius: 4px;
+}
+.notes li:hover {
+  color: #039be5;
+  background-color: #DDD;
+  left: 50px;
+}
+.notes li.selected {
+  background-color: #CFD8DC;
+  color: white;
+}
+.notes li.selected:hover {
+  background-color: #BBD8DC;
+  color: white;
+}
+.notes .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#405061;
+  line-height: 10px;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 30px;
+  width: 100px;
+  margin-right: 10px;
+  border-radius: 4px 0 0 4px;
+}
+#container{
+  width: 100%;
+  /* background-color: #ffcc33; */
+}
+
+#first {
+  float: left;
+  width: 400px;
+}
+#second {
+  float: left;
+  /* background-color: green; */
+}
+.detailsBody{
+  margin-left: 50px;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: 10px;
+  padding: 4px 0 0 0;
+  height: 30px;
+  border-radius: 4px;
+}
+.spanBody{
+  padding-right: 20px;
+}
+button {
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+}
+
+button:hover {
+  background-color: #cfd8dc;
+}
+
+button.delete {
+  position: relative;
+  left: 40px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  float: right;
+  margin-right: 50px;
+}
+button.update {
+  position: relative;
+  left: 80px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  float: right;
+  margin-right: 50px;
+}
