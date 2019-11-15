@@ -39,7 +39,7 @@ export class NotesComponent implements OnInit {
       }
     );
     this.apiService.getAllNotes() .subscribe((data: any) => {
-      let noteObj = new Note();
+      const noteObj = new Note();
 
       this.notes = data.results;
       if (data.success) {
@@ -49,7 +49,7 @@ export class NotesComponent implements OnInit {
           this.notes.push(noteObj);
           console.log(this.notes);
         }
-      Swal.close();
+        Swal.close();
       }
     });
 }

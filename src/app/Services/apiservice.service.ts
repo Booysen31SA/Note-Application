@@ -16,7 +16,7 @@ export class APIServiceService {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Accept': localStorage.getItem('Token')
+        Accept: localStorage.getItem('Token')
       })
     };
   }
@@ -50,7 +50,6 @@ export class APIServiceService {
    }
 
    delete(id: string) {
-     //console.log(id);
      return this.http.delete(this.url + 'notes/delete/' + id);
   }
 }
