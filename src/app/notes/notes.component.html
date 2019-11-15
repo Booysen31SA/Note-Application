@@ -23,10 +23,10 @@
     </div>
 
     <div class = "detailsBody">
-      <label class = "spanBody">Mesage:
-        <input [(ngModel)]="selectedNote.message" placeholder="message"/>
-      </label>
+      <label class = "spanBody">Mesage: </label>
+
     </div>
+    <textarea rows="4" cols="50" [(ngModel)]="selectedNote.message" placeholder="message" id ="textAreaID"></textarea>
     <div>
       <button class="delete" title="Delete Note"
       (click)="delete(selectedNote)">x</button>

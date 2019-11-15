@@ -2,7 +2,7 @@ h2{
   margin-left: 50px;
 }
 .body{
-  margin-left: 50px;
+  margin-left: 155px;
 }
 .notes {
   margin: 0 0 2em 0;
@@ -21,6 +21,9 @@ h2{
   height: 30px;
   border-radius: 4px;
   width: 500px;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .notes li:hover {
   color: #039be5;
@@ -107,4 +110,7 @@ button.update {
   color: white;
   float: right;
   margin-right: 50px;
+}
+#textAreaID{
+  margin-left: 10px;
 }
