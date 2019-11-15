@@ -11,10 +11,12 @@ import {Router} from '@angular/router';
 })
 export class NotesComponent implements OnInit {
 
-  constructor(private apiService: APIServiceService, private router: Router) { }
-
+  p = 1;
   notes = [];
   selectedNote: Note;
+
+  constructor(private apiService: APIServiceService, private router: Router) { }
+
 
   ngOnInit() {
     this.getNotes();

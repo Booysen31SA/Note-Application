@@ -5,12 +5,13 @@
 <div id="first">
     <h2>My Notes</h2>
 <ul class="notes" >
-  <li *ngFor="let note of notes"
+  <li *ngFor="let note of notes | paginate: { itemsPerPage: 10, currentPage: p }"
     [class.selected]="note === selectedNote"
     (click)="onSelect(note)">
       <span class="badge">{{note.Title}}</span> {{note.message}}
   </li>
 </ul>
+<pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
 </div>
 
 <div *ngIf="selectedNote" class="body" id="second">

@@ -8,7 +8,7 @@ import { HttpClientModule, HttpClientJsonpModule, HttpClient } from '@angular/co
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotesComponent } from './notes/notes.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { NotesComponent } from './notes/notes.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -131,3 +131,6 @@ button.update {
 #IDField {
   width: 445px;
 }
+.my-pagination /deep/ .ngx-pagination {
+  margin-left: 51px;
+}
