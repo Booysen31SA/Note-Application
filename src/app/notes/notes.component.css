@@ -20,6 +20,7 @@ h2{
   padding: 4px 0 0 0;
   height: 30px;
   border-radius: 4px;
+  width: 500px;
 }
 .notes li:hover {
   color: #039be5;

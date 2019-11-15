@@ -32,18 +32,25 @@ export class APIServiceService {
    getTokenValue() {
     const body = JSON.stringify({userId: this.userID});
     return this.http.post(this.url + 'auth/token', body).subscribe((data: any) => {
-      localStorage.setItem('Token', data['message']['token']);
+      localStorage.setItem('Token', data.message.token);
     });
    }
 
    getAllNotes() {
-    //this.getTokenValue();
-
-    // tslint:disable-next-line: prefer-const
-    var token = localStorage.getItem('Token');
-    const headers = new HttpHeaders({ testing: token});
-
-    //console.log(headers);
-    return this.http.get(this.url + 'notes/getAll/1');
+    return this.http.get(this.url + 'notes/getAll/0/' + localStorage.getItem('userID'));
    }
+
+   update(TitleInput: string, messageInput: string) {
+     const body = JSON.stringify({Title: TitleInput,
+                                  message: messageInput,
+                                  });
+     console.log(body, 'sdcsdcsdc');
+
+     return this.http.post(this.url + 'notes/' + TitleInput, body);
+   }
+
+   delete(id: string) {
+     //console.log(id);
+     return this.http.delete(this.url + 'notes/delete/' + id);
+  }
 }

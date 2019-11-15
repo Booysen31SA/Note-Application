@@ -4,5 +4,6 @@ export class Note {
   disabled: number;
   id: number;
   message: string;
-  titleID: string;
+  Title: string;
+  userId: string;
 }

@@ -8,14 +8,20 @@
   <li *ngFor="let note of notes"
     [class.selected]="note === selectedNote"
     (click)="onSelect(note)">
-      <span class="badge">{{note.titleID}}</span> {{note.message}}
+      <span class="badge">{{note.Title}}</span> {{note.message}}
   </li>
 </ul>
 </div>
 
 <div *ngIf="selectedNote" class="body" id="second">
-    <h2>Details for {{selectedNote.titleID | uppercase}}</h2>
-    <div class = "detailsBody"><span class = "spanBody">Title ID:</span>{{selectedNote.titleID}}</div>
+    <h2>Details for {{selectedNote.Title | uppercase}}</h2>
+
+    <div class = "detailsBody">
+        <label class = "spanBody">Title ID:
+            <input [(ngModel)]="selectedNote.Title" placeholder="Title ID"/>
+          </label>
+    </div>
+
     <div class = "detailsBody">
       <label class = "spanBody">Mesage:
         <input [(ngModel)]="selectedNote.message" placeholder="message"/>

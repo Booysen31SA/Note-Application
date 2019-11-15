@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
           title: 'User name or password is incorrect',
           showConfirmButton: false,
           timer: 1500,
-        })
+        });
       }
     });
   }

@@ -36,8 +36,16 @@ export class NotesComponent implements OnInit {
       }
     );
     this.apiService.getAllNotes() .subscribe((data: any) => {
+      let noteObj = new Note();
+
       this.notes = data.results;
       if (data.success) {
+        if (data.count === 0) {
+          noteObj.Title = '*';
+          noteObj.message = 'No Notes Available';
+          this.notes.push(noteObj);
+          console.log(this.notes);
+        }
       Swal.close();
       }
     });
@@ -46,13 +54,43 @@ onSelect(note: Note): void {
   this.selectedNote = note;
 }
 
-delete(id: string) {
-  console.log(id['titleID']);
-  alert(id['titleID']);
+delete(id: any) {
+  //console.log(id);
+  this.apiService.delete(id.Title) .subscribe((data: any) => {
+    if (data.success) {
+      Swal.fire(
+        'Updated!',
+        'success'
+      );
+      this.getNotes();
+    } else {
+      Swal.fire(
+        'Failed!',
+        data.message,
+        'error'
+      );
+      this.getNotes();
+    }
+  });
 }
-update(id: string) {
-  console.log(id['titleID']);
-  alert(id['titleID']);
+
+update(id: any) {
+  this.apiService.update(id.Title, id.message) .subscribe((data: any) => {
+    if (data.success) {
+      Swal.fire(
+        'Updated!',
+        'success'
+      );
+      this.getNotes();
+    } else {
+      Swal.fire(
+        'Failed!',
+        data.message,
+        'error'
+      );
+      this.getNotes();
+    }
+  });
 }
 
 }
