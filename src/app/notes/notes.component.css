@@ -52,6 +52,9 @@ h2{
   width: 100px;
   margin-right: 10px;
   border-radius: 4px 0 0 4px;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #container{
   width: 100%;
@@ -65,6 +68,10 @@ h2{
 #second {
   float: left;
   /* background-color: green; */
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 500px;
 }
 .detailsBody{
   margin-left: 50px;
@@ -95,22 +102,31 @@ button:hover {
 
 button.delete {
   position: relative;
+  left: 10px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  float: right;
+  margin-right: 50px;
+  width: 200px;
+}
+button.update {
+  position: relative;
   left: 40px;
   top: -4px;
   background-color: gray !important;
   color: white;
   float: right;
   margin-right: 50px;
-}
-button.update {
-  position: relative;
-  left: 80px;
-  top: -4px;
-  background-color: gray !important;
-  color: white;
-  float: right;
-  margin-right: 50px;
+  width: 200px;
 }
 #textAreaID{
   margin-left: 10px;
+  width: 480px;
+}
+.detailsLabel{
+  margin-left: 10px;
+}
+#IDField {
+  width: 425px;
 }

@@ -14,11 +14,11 @@
 </div>
 
 <div *ngIf="selectedNote" class="body" id="second">
-    <h2>Details for {{selectedNote.Title | uppercase}}</h2>
+    <h2 class = "detailsLabel">Details for {{selectedNote.Title | uppercase}}</h2>
 
     <div class = "detailsBody">
         <label class = "spanBody">Title ID:
-            <input [(ngModel)]="selectedNote.Title" placeholder="Title ID"/>
+            <input [(ngModel)]="selectedNote.Title" placeholder="Title ID" id="IDField"/>
           </label>
     </div>
 

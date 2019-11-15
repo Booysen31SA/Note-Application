@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIServiceService} from '../Services/apiservice.service';
 import { Note } from '../models/note';
 import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-notes',
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class NotesComponent implements OnInit {
 
-  constructor(private apiService: APIServiceService) { }
+  constructor(private apiService: APIServiceService, private router: Router) { }
 
   notes = [];
   selectedNote: Note;
@@ -55,14 +56,18 @@ onSelect(note: Note): void {
 }
 
 delete(id: any) {
-  //console.log(id);
+    if (id.Title === '*') {
+      Swal.fire(
+        'Create a Note First!',
+      );
+  } else {
   this.apiService.delete(id.Title) .subscribe((data: any) => {
     if (data.success) {
       Swal.fire(
         'Updated!',
         'success'
       );
-      this.getNotes();
+      this.router.navigateByUrl('/notes');
     } else {
       Swal.fire(
         'Failed!',
@@ -73,24 +78,31 @@ delete(id: any) {
     }
   });
 }
+}
 
 update(id: any) {
-  this.apiService.update(id.Title, id.message) .subscribe((data: any) => {
-    if (data.success) {
-      Swal.fire(
-        'Updated!',
-        'success'
-      );
-      this.getNotes();
-    } else {
-      Swal.fire(
-        'Failed!',
-        data.message,
-        'error'
-      );
-      this.getNotes();
-    }
-  });
+  if (id.Title === '*') {
+    Swal.fire(
+      'Create a Note First!',
+    );
+} else {
+    this.apiService.update(id.Title, id.message) .subscribe((data: any) => {
+      if (data.success) {
+        Swal.fire(
+          'Updated!',
+          'success'
+        );
+        this.getNotes();
+      } else {
+        Swal.fire(
+          'Failed!',
+          data.message,
+          'error'
+        );
+        this.getNotes();
+      }
+    });
+  }
 }
 
 }
