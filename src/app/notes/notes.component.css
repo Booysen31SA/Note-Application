@@ -71,7 +71,6 @@ h2{
   overflow:hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 500px;
 }
 .detailsBody{
   margin-left: 50px;
@@ -82,9 +81,11 @@ h2{
   padding: 4px 0 0 0;
   height: 30px;
   border-radius: 4px;
+  max-width: 500px;
 }
 .spanBody{
   padding-right: 20px;
+  max-width: 500px;
 }
 button {
   background-color: #eee;
@@ -122,11 +123,11 @@ button.update {
 }
 #textAreaID{
   margin-left: 10px;
-  width: 480px;
+  width: 500px;
 }
 .detailsLabel{
   margin-left: 10px;
 }
 #IDField {
-  width: 425px;
+  width: 445px;
 }
