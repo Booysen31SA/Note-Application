@@ -94,7 +94,7 @@ delete(id: any) {
   this.apiService.delete(id.Title) .subscribe((data: any) => {
     if (data.success) {
       Swal.fire(
-        'Updated!',
+        'Deleted!',
         'success'
       );
       this.router.navigateByUrl('/notes');
@@ -155,14 +155,18 @@ update(id: any) {
     const noteObj = new Note();
     this.notes = data.results;
 
-    this.messageService.add(data.count + ' Records Found for ' + data.results[0].Title);
     if (data.success) {
       if (data.count === 0) {
         noteObj.Title = '*';
         noteObj.message = 'No Notes Available';
         this.notes.push(noteObj);
         console.log(this.notes);
+      } else {
+        this.messageService.add(data.count + ' Records Found for ' + data.results[0].Title);
       }
+      Swal.close();
+    } else {
+      this.messageService.add(data.message);
       Swal.close();
     }
   });
