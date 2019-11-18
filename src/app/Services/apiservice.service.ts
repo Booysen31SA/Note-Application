@@ -57,4 +57,9 @@ export class APIServiceService {
     this.messageService.add('Message: ' + id + ' deleted');
     return this.http.delete(this.url + 'notes/delete/' + id);
   }
+
+  searchNote(id: string) {
+   this.messageService.add('Searching For ' + id );
+   return this.http.get(this.url + 'notes/getByID/' + id);
+  }
 }

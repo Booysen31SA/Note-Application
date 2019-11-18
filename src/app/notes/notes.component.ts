@@ -106,5 +106,36 @@ update(id: any) {
     });
   }
 }
+ search(id: any) {
+  this.notes = [];
+  Swal.fire({
+    title: 'Searching for your Note....',
+    onOpen() {
+      Swal.showLoading();
+    }
+  }).then(
+    // tslint:disable-next-line: only-arrow-functions
+    function() {},
+    // handling the promise rejection
+    function failed(isLoggIn) {
+      if (isLoggIn === true) {
+        console.log('I was closed by the timer');
+      }
+    }
+  );
+  this.apiService.searchNote(id.Title) .subscribe((data: any) => {
+    const noteObj = new Note();
 
+    this.notes = data.results;
+    if (data.success) {
+      if (data.count === 0) {
+        noteObj.Title = '*';
+        noteObj.message = 'No Notes Available';
+        this.notes.push(noteObj);
+        console.log(this.notes);
+      }
+      Swal.close();
+    }
+  });
+ }
 }
