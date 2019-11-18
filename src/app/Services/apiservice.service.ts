@@ -62,4 +62,12 @@ export class APIServiceService {
    this.messageService.add('Searching For ' + id );
    return this.http.get(this.url + 'notes/getByID/' + id);
   }
+
+  addNote(note: any) {
+    const body = JSON.stringify({userId: localStorage.getItem('userID'),
+                                message: note.message,
+                                Title: note.Title});
+    this.messageService.add('Added Note ' + note.Title );
+    return this.http.post(this.url + 'notes' , body);
+  }
 }

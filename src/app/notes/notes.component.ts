@@ -14,6 +14,7 @@ export class NotesComponent implements OnInit {
   p = 1;
   notes = [];
   selectedNote: Note;
+  createdNote: Note;
 
   constructor(private apiService: APIServiceService, private router: Router) { }
 
@@ -55,6 +56,29 @@ export class NotesComponent implements OnInit {
 }
 onSelect(note: Note): void {
   this.selectedNote = note;
+}
+onCreate(note: Note): void {
+  this.createdNote = note;
+}
+
+create(id: any) {
+
+    this.apiService.addNote(id) .subscribe((data: any) => {
+      if (data.success) {
+        Swal.fire(
+          'Created!',
+          'success'
+        );
+        this.getNotes();
+      } else {
+        Swal.fire(
+          'Failed!',
+          data.message,
+          'error'
+        );
+        this.getNotes();
+      }
+    });
 }
 
 delete(id: any) {

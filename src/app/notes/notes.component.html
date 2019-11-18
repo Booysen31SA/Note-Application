@@ -3,7 +3,9 @@
 
 <div id="container">
 <div id="first">
-    <h2>My Notes</h2>
+    <h2>My Notes
+      <button id="addBTN" title="Add Note" >+</button>
+    </h2>
 <ul class="notes" >
   <li *ngFor="let note of notes | paginate: { itemsPerPage: 10, currentPage: p }"
     [class.selected]="note === selectedNote"

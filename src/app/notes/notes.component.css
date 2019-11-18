@@ -70,7 +70,7 @@ h2{
   text-overflow: ellipsis;
 }
 .detailsBody{
-  mginargin-left: 50px;
+  margin-left: 50px;
   /* position: relative; */
   left: 0;
   background-color: #EEE;
@@ -137,4 +137,10 @@ button.update {
 }
 .my-pagination{
   text-align: center;
+}
+
+#addBTN{
+/* float: right; */
+margin-top: -5px;
+/* border-radius: 50%; */
 }
