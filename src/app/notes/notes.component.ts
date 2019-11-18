@@ -3,6 +3,7 @@ import { APIServiceService} from '../Services/apiservice.service';
 import { Note } from '../models/note';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import { MessageService } from '../Services/message.service';
 
 @Component({
   selector: 'app-notes',
@@ -20,7 +21,7 @@ export class NotesComponent implements OnInit {
   createdNote: Note;
   searchID: string;
 
-  constructor(private apiService: APIServiceService, private router: Router) { }
+  constructor(private apiService: APIServiceService, private router: Router, private messageService: MessageService) { }
 
 
   ngOnInit() {
@@ -152,8 +153,9 @@ update(id: any) {
   );
   this.apiService.searchNote(id.Title) .subscribe((data: any) => {
     const noteObj = new Note();
-console.log(data);
     this.notes = data.results;
+
+    this.messageService.add(data.count + ' Records Found for ' + data.results[0].Title);
     if (data.success) {
       if (data.count === 0) {
         noteObj.Title = '*';
