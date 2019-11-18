@@ -11,8 +11,11 @@ import {Router} from '@angular/router';
 })
 export class NotesComponent implements OnInit {
 
+  Title: string;
+  message: string;
   p = 1;
   notes = [];
+  note: Note;
   selectedNote: Note;
   createdNote: Note;
 
@@ -20,6 +23,7 @@ export class NotesComponent implements OnInit {
 
 
   ngOnInit() {
+    this.note = new Note();
     this.getNotes();
   }
 
@@ -57,12 +61,10 @@ export class NotesComponent implements OnInit {
 onSelect(note: Note): void {
   this.selectedNote = note;
 }
-onCreate(note: Note): void {
-  this.createdNote = note;
-}
+
 
 create(id: any) {
-
+    id.userId = localStorage.getItem('userID');
     this.apiService.addNote(id) .subscribe((data: any) => {
       if (data.success) {
         Swal.fire(
