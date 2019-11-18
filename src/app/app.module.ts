@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotesComponent } from './notes/notes.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginComponent,
     TopBarComponent,
     DashboardComponent,
-    NotesComponent
+    NotesComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

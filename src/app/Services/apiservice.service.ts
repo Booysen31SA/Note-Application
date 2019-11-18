@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MessageService } from '../Services/message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class APIServiceService {
   userID: string;
   httpOptions;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private messageService: MessageService) {
+
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -37,7 +39,8 @@ export class APIServiceService {
    }
 
    getAllNotes() {
-    return this.http.get(this.url + 'notes/getAll/0/' + localStorage.getItem('userID'));
+     this.messageService.add('Message: Fetched All Notes');
+     return this.http.get(this.url + 'notes/getAll/0/' + localStorage.getItem('userID'));
    }
 
    update(TitleInput: string, messageInput: string) {
@@ -46,10 +49,12 @@ export class APIServiceService {
                                   });
      console.log(body, 'sdcsdcsdc');
 
+     this.messageService.add('Message: ' + TitleInput + ' updated');
      return this.http.post(this.url + 'notes/' + TitleInput, body);
    }
 
    delete(id: string) {
-     return this.http.delete(this.url + 'notes/delete/' + id);
+    this.messageService.add('Message: ' + id + ' deleted');
+    return this.http.delete(this.url + 'notes/delete/' + id);
   }
 }
