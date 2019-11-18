@@ -135,3 +135,6 @@ button.update {
     margin-left: 35px;
   }
 }
+.my-pagination{
+  text-align: center;
+}
