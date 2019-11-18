@@ -18,6 +18,7 @@ export class NotesComponent implements OnInit {
   note: Note;
   selectedNote: Note;
   createdNote: Note;
+  searchID: string;
 
   constructor(private apiService: APIServiceService, private router: Router) { }
 
@@ -151,7 +152,7 @@ update(id: any) {
   );
   this.apiService.searchNote(id.Title) .subscribe((data: any) => {
     const noteObj = new Note();
-
+console.log(data);
     this.notes = data.results;
     if (data.success) {
       if (data.count === 0) {

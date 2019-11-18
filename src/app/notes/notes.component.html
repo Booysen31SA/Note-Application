@@ -5,6 +5,13 @@
 <div id="first">
     <h2>My Notes
       <button id="addBTN" title="Add Note" data-toggle="modal" data-target="#myModal">+</button>
+
+        <input type="text" placeholder="Search" aria-label="Search" id ="searchBar"
+        required
+        [(ngModel)] = "note.Title">
+        <span>
+          <button (click)="search(note)">Search</button>
+        </span>
     </h2>
 <ul class="notes" >
   <li *ngFor="let note of notes | paginate: { itemsPerPage: 10, currentPage: p }"

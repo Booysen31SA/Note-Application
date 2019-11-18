@@ -144,3 +144,11 @@ button.update {
 margin-top: -5px;
 /* border-radius: 50%; */
 }
+#searchBar{
+  width: 30%;
+  margin-left: 60px;
+  height: 15%;
+}
+#searchBtn{
+  float: right;
+}
