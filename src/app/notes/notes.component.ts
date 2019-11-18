@@ -24,7 +24,7 @@ export class NotesComponent implements OnInit {
 
   getNotes() {
     Swal.fire({
-      title: 'Loading....',
+      title: 'Getting Your Notes....',
       onOpen() {
         Swal.showLoading();
       }
