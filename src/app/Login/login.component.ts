@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.user = new UserLogin();
+    localStorage.setItem('Token', '');
+    localStorage.setItem('userID', '');
+
   }
 
   submit(user) {
@@ -33,7 +36,8 @@ export class LoginComponent implements OnInit {
         Swal.showLoading();
       }
     }).then(
-      function () {},
+      // tslint:disable-next-line: only-arrow-functions
+      function() {},
       // handling the promise rejection
       function failed(isLoggIn) {
         if (isLoggIn === true) {
