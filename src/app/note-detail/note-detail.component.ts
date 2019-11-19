@@ -26,12 +26,27 @@ export class NoteDetailComponent implements OnInit {
   }
 
   getNote(): void {
+    Swal.fire({
+      title: 'Loading....',
+      onOpen: function () {
+        Swal.showLoading();
+      }
+    }).then(
+      // tslint:disable-next-line: only-arrow-functions
+      function() {},
+      // handling the promise rejection
+      function failed(isLoggIn) {
+        if (isLoggIn === true) {
+          console.log('I was closed by the timer');
+        }
+      }
+    );
     const id = this.route.snapshot.paramMap.get('id');
     this.noteService.searchNote(id)
     .subscribe((data: any) => {
       const noteObj = new Note();
       this.note = data.results[0];
-      console.log(data.results[0]);
+      Swal.close();
     });
   }
 
