@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Note } from '../models/note'
+import { Note } from '../models/note';
 import { APIServiceService} from '../Services/apiservice.service';
 
 @Component({

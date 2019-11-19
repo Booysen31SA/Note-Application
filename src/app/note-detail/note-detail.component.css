@@ -1,0 +1,44 @@
+#goBack{
+  margin-left: 50px;
+}
+.detailsLabel{
+  margin-left: 50px;
+}
+.detailsBody{
+  margin-right: 50px;
+  /* position: relative; */
+  left: 0;
+  background-color: #EEE;
+  margin: 10px;
+  padding: 4px 0 0 0;
+  height: 30px;
+  border-radius: 4px;
+  max-width: 500px;
+}
+#textAreaID{
+  margin-left: 50px;
+  width: 500px;
+  height: 308px;
+}
+button.delete {
+  position: relative;
+  left: 10px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  margin-left: 50px;
+  width: 200px;
+}
+button.update {
+  position: relative;
+  left: 40px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  margin-left: 50px;
+  width: 200px;
+}
+.spanBody{
+  margin-left: 50px;
+}
+

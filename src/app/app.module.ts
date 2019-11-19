@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotesComponent } from './notes/notes.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MessagesComponent } from './messages/messages.component';
+import { NoteDetailComponent } from './note-detail/note-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MessagesComponent } from './messages/messages.component';
     TopBarComponent,
     DashboardComponent,
     NotesComponent,
-    MessagesComponent
+    MessagesComponent,
+    NoteDetailComponent
   ],
   imports: [
     BrowserModule,
