@@ -1,0 +1,21 @@
+<app-top-bar></app-top-bar>
+<button (click)="goBack()" id="goBack">Go Back</button>
+<div *ngIf="note">
+  <h2 class = "detailsLabel">Details for {{note.Title | uppercase}}</h2>
+
+  <div>
+    <span><label class = "detailsLabel">Title :</label> </span> {{note.Title}}</div>
+  <div>
+      <div class = "detailsBody">
+          <label class = "spanBody">Mesage: </label>
+
+        </div>
+        <textarea rows="4" cols="50" [(ngModel)]="note.message" placeholder="message" id ="textAreaID"></textarea>
+        <div>
+          <button class="update" title="Update Note"
+          (click)="update(note)">&#10010;</button>
+          <button class="delete" title="Delete Note"
+          (click)="delete(note)">x</button>
+        </div>
+  </div>
+</div>
