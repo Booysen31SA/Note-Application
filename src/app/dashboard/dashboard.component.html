@@ -1,4 +1,11 @@
 <app-top-bar></app-top-bar>
-<h1>DAshboard works</h1>
+<h3>Latest Created Notes</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let note of notes" class="col-1-4">
+    <div class="module note">
+      <h4>{{note}}</h4>
+    </div>
+  </a>
+</div>
 
 <app-messages></app-messages>

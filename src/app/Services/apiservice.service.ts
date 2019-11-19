@@ -70,4 +70,7 @@ export class APIServiceService {
     this.messageService.add('Added Note ' + note.Title );
     return this.http.post(this.url + 'notes' , body);
   }
+     dashboardNotes() {
+      return this.http.get(this.url + 'dashboard/' + localStorage.getItem('userID'));
+    }
 }
