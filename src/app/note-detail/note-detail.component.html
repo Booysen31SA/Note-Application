@@ -13,9 +13,9 @@
         <textarea rows="4" cols="50" [(ngModel)]="note.message" placeholder="message" id ="textAreaID"></textarea>
         <div>
           <button class="update" title="Update Note"
-          (click)="update(selectedNote)">&#10010;</button>
+          (click)="update(note)">&#10010;</button>
           <button class="delete" title="Delete Note"
-          (click)="delete(selectedNote)">x</button>
+          (click)="delete(note)">x</button>
         </div>
   </div>
 </div>

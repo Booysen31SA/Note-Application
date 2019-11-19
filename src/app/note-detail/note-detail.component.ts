@@ -38,6 +38,7 @@ export class NoteDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
   delete(id: any) {
     if (id.Title === '*') {
       Swal.fire(

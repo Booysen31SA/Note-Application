@@ -5,11 +5,10 @@
   margin-left: 50px;
 }
 .detailsBody{
-  margin-right: 50px;
+  margin-left: 50px;
   /* position: relative; */
   left: 0;
   background-color: #EEE;
-  margin: 10px;
   padding: 4px 0 0 0;
   height: 30px;
   border-radius: 4px;
@@ -37,8 +36,5 @@ button.update {
   color: white;
   margin-left: 50px;
   width: 200px;
-}
-.spanBody{
-  margin-left: 50px;
 }
 
