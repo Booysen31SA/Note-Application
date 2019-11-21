@@ -69,6 +69,6 @@ export class LoginComponent implements OnInit {
 
 
   register() {
-   alert('Register function coming soon');
+    this.router.navigateByUrl('/registration');
   }
 }
