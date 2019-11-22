@@ -105,8 +105,8 @@ button.delete {
   background-color: gray !important;
   color: white;
   float: right;
-  margin-right: 50px;
-  width: 200px;
+  margin-right: 20px;
+  width: 140px;
 }
 button.update {
   position: relative;
@@ -115,8 +115,18 @@ button.update {
   background-color: gray !important;
   color: white;
   float: right;
-  margin-right: 50px;
-  width: 200px;
+  margin-right: 38px;
+  width: 140px;
+}
+button.favorite{
+  position: relative;
+  left: 40px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  float: right;
+  margin-right: 10px;
+  width: 140px;
 }
 #textAreaID{
   margin-left: 10px;

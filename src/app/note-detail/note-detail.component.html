@@ -12,10 +12,12 @@
         </div>
         <textarea rows="4" cols="50" [(ngModel)]="note.message" placeholder="message" id ="textAreaID"></textarea>
         <div>
-          <button class="update" title="Update Note"
-          (click)="update(note)">&#10010;</button>
-          <button class="delete" title="Delete Note"
-          (click)="delete(note)">x</button>
+            <button class="delete" title="Delete Note"
+            (click)="delete(note)">x</button>
+            <button class="update" title="Update Note"
+            (click)="update(note)">&#10010;</button>
+            <button class="favorite" title="Add Note to favorite"
+            (click)="addToFavorite(note)">&#9825;</button>
         </div>
   </div>
 </div>

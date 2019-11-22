@@ -175,4 +175,7 @@ update(id: any) {
     }
   });
  }
+  addToFavorite(id: any) {
+
+  }
 }
