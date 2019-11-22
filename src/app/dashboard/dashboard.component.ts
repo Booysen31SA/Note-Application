@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Note } from '../models/note';
 import { APIServiceService} from '../Services/apiservice.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,10 +12,14 @@ import { APIServiceService} from '../Services/apiservice.service';
 export class DashboardComponent implements OnInit {
 
   notes: Note[] = [];
-  constructor(private apiService: APIServiceService) { }
+  constructor(private apiService: APIServiceService, private router: Router) { }
 
   ngOnInit() {
+    if (localStorage.getItem('userID') === '') {
+      this.router.navigateByUrl('/login');
+    } else {
     this.dashboardNotes();
+    }
   }
 
   dashboardNotes() {

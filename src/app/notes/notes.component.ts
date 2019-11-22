@@ -26,7 +26,11 @@ export class NotesComponent implements OnInit {
 
   ngOnInit() {
     this.note = new Note();
-    this.getNotes();
+    if (localStorage.getItem('userID') === '') {
+      this.router.navigateByUrl('/login');
+    } else {
+      this.getNotes();
+    }
   }
 
   getNotes() {

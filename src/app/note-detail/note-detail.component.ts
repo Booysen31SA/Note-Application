@@ -22,7 +22,11 @@ export class NoteDetailComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.getNote();
+    if (localStorage.getItem('userID') === '') {
+      this.router.navigateByUrl('/login');
+    } else {
+      this.getNote();
+    }
   }
 
   getNote(): void {
