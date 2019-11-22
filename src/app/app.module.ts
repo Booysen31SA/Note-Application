@@ -12,6 +12,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { MessagesComponent } from './messages/messages.component';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RegistrationComponent } from './registration/registration.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
