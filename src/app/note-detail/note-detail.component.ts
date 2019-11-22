@@ -70,7 +70,7 @@ export class NoteDetailComponent implements OnInit {
         'Deleted!',
         'success'
       );
-      this.router.navigateByUrl('/notes');
+      window.location.reload();
     } else {
       Swal.fire(
         'Failed!',
@@ -94,12 +94,14 @@ update(id: any) {
           'Updated!',
           'success'
         );
+        window.location.reload();
       } else {
         Swal.fire(
           'Failed!',
           data.message,
           'error'
         );
+        window.location.reload();
       }
     });
   }

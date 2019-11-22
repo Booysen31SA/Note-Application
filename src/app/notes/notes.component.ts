@@ -84,7 +84,7 @@ create(id: any) {
           data.message,
           'error'
         );
-        this.getNotes();
+        window.location.reload();
       }
     });
 }
@@ -101,14 +101,14 @@ delete(id: any) {
         'Deleted!',
         'success'
       );
-      this.router.navigateByUrl('/notes');
+      window.location.reload();
     } else {
       Swal.fire(
         'Failed!',
         data.message,
         'error'
       );
-      this.getNotes();
+      window.location.reload();
     }
   });
 }
@@ -126,14 +126,14 @@ update(id: any) {
           'Updated!',
           'success'
         );
-        this.getNotes();
+        window.location.reload();
       } else {
         Swal.fire(
           'Failed!',
           data.message,
           'error'
         );
-        this.getNotes();
+        window.location.reload();
       }
     });
   }
