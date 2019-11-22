@@ -1,4 +1,5 @@
 export class Note {
+  favorite: number;
   dateCreated: Date;
   dateModified: Date;
   disabled: number;
