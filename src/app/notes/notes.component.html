@@ -46,7 +46,8 @@
       <button class="update" title="Update Note"
       (click)="update(selectedNote)">&#10010;</button>
       <button class="favorite" title="Add Note to favorite"
-      (click)="addToFavorite(selectedNote)">&#9825;</button>
+      (click)="addToFavorite(selectedNote)"
+      [ngStyle]="{'color':getColor()}">&#9825;</button>
     </div>
 
   </div>
