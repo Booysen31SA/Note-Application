@@ -73,4 +73,7 @@ export class APIServiceService {
      dashboardNotes() {
       return this.http.get(this.url + 'dashboard/' + localStorage.getItem('userID'));
     }
+    favorite(id: number) {
+      return this.http.get(this.url + 'notes/favorite/' + id);
+    }
 }

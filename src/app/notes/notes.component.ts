@@ -20,6 +20,7 @@ export class NotesComponent implements OnInit {
   selectedNote: Note;
   createdNote: Note;
   searchID: string;
+  ID: number;
 
   constructor(private apiService: APIServiceService, private router: Router, private messageService: MessageService) { }
 
@@ -66,6 +67,7 @@ export class NotesComponent implements OnInit {
 }
 onSelect(note: Note): void {
   this.selectedNote = note;
+  this.ID = note.ID;
 }
 
 
@@ -175,7 +177,9 @@ update(id: any) {
     }
   });
  }
-  addToFavorite(id: any) {
-
+  addToFavorite() {
+    this.apiService.favorite(this.ID) .subscribe((data: any) => {
+      console.log(data);
+    });
   }
 }
