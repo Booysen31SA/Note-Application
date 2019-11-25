@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
     Swal.fire({
       title: 'Loading....',
+      timer: 3000,
       onOpen: function () {
         Swal.showLoading();
       }
