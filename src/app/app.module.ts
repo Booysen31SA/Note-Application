@@ -13,6 +13,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NotesComponent,
     MessagesComponent,
     NoteDetailComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
