@@ -172,13 +172,14 @@ addToFavorite() {
     }
   );
   this.apiService.favorite(this.ID) .subscribe((data: any) => {
-    this.favorite = data['favorite'];
+    this.favorite = data.favorite;
     this.getNotes();
     Swal.close();
   });
 }
 
 getColor() {
+  // tslint:disable-next-line: triple-equals
   if (this.favorite == 1) {
     return 'red';
   } else {
