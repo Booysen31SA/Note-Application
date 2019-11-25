@@ -76,4 +76,9 @@ export class APIServiceService {
     favorite(id: number) {
       return this.http.get(this.url + 'notes/favorite/' + id);
     }
+
+    getAllFavorites() {
+      this.messageService.add('Message: Fetched All Favorite Notes');
+      return this.http.get(this.url + 'notes/getFavorite/1/' + localStorage.getItem('userID'));
+    }
 }
