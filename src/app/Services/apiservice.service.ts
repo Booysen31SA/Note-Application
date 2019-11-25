@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from '../Services/message.service';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,23 @@ export class APIServiceService {
     return this.http.post(this.url + 'auth/token', body).subscribe((data: any) => {
       localStorage.setItem('Token', data.message.token);
     });
+   }
+
+   register(user: User) {
+     const dateOdBirth = user.dateOfBirth['year'] + '-' + user.dateOfBirth['month'] + '-' + user.dateOfBirth['day'];
+     const body = JSON.stringify({    password: user.password,
+                                      title: user.title,
+                                      firstName: user.firstName,
+                                      lastName: user.lastName,
+                                      // tslint:disable-next-line: max-line-length
+                                      dateOfBirth: dateOdBirth,
+                                      gender: user.gender,
+                                      mobileNumber: user.mobileNumber,
+                                      telephoneNumber: user.telephoneNumber,
+                                      email: user.email
+                                    });
+     console.log(body);
+     return this.http.post(this.url + 'user', body);
    }
 
    getAllNotes() {

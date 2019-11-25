@@ -4,7 +4,7 @@ export class User {
     title: string;
     firstName: string;
     lastName: string;
-    dateOfBirrth: Date;
+    dateOfBirth: Date;
     gender: string;
     mobileNumber: string;
     telephoneNumber: string;

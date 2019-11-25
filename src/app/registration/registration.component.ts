@@ -28,18 +28,30 @@ export class RegistrationComponent implements OnInit {
     this.Validation();
     console.log(this.isContinue);
     if (this.isContinue) {
-      Swal.fire('Success');
+      this.apiService.register(this.user) .subscribe((data: any) => {
+        if (data.success) {
+          Swal.fire(
+            'Created!',
+            'Your user ID is: ' + data.userId,
+          );
+          localStorage.setItem('userId', data.userId);
+        } else {
+          Swal.fire(
+            'Failed!',
+            data.message,
+            'error'
+          );
+          this.router.navigateByUrl('/login');
+        }
+      });
 
     } else {
       Swal.fire('Please Fill out missing forms');
     }
   }
   Validation() {
-     console.log(this.user);
-
-     if (this.user.userId === undefined) {
-      this.isContinue = false;
-    } else if (this.user.email === undefined) {
+    console.log(this.user);
+    if (this.user.email === undefined) {
       this.isContinue = false;
     } else if (this.user.firstName === undefined) {
       this.isContinue = false;
@@ -47,13 +59,11 @@ export class RegistrationComponent implements OnInit {
       this.isContinue = false;
     } else if (this.user.title === undefined) {
       this.isContinue = false;
-    } else if (this.user.dateOfBirrth === undefined) {
+    } else if (this.user.dateOfBirth === undefined) {
       this.isContinue = false;
     } else if (this.user.gender === undefined) {
       this.isContinue = false;
     } else if (this.user.mobileNumber === undefined) {
-      this.isContinue = false;
-    } else if (this.user.telephoneNumber === undefined) {
       this.isContinue = false;
     }
   }

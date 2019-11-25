@@ -3,6 +3,7 @@ import { UserLogin } from '../models/User-Login';
 import { APIServiceService} from '../Services/apiservice.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -23,9 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.user = new UserLogin();
-    localStorage.setItem('Token', '');
-    localStorage.setItem('userID', '');
-
+    this.userId = localStorage.getItem('userId');
   }
 
   submit(user) {
