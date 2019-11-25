@@ -19,14 +19,31 @@
   width: 500px;
   height: 308px;
 }
+
+button {
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+}
+
+button:hover {
+  background-color: #cfd8dc;
+}
+
 button.delete {
   position: relative;
   left: 10px;
   top: -4px;
   background-color: gray !important;
   color: white;
-  margin-left: 50px;
-  width: 200px;
+  float: left;
+  margin-right: 10px;
+  width: 140px;
+  margin-left: 40px;
 }
 button.update {
   position: relative;
@@ -34,7 +51,18 @@ button.update {
   top: -4px;
   background-color: gray !important;
   color: white;
-  margin-left: 50px;
-  width: 200px;
+  float: left;
+  margin-right: 38px;
+  width: 140px;
+}
+button.favorite{
+  position: relative;
+  left: 40px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  float: left;
+  margin-right: 10px;
+  width: 140px;
 }
 

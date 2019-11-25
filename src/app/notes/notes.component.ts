@@ -20,13 +20,19 @@ export class NotesComponent implements OnInit {
   selectedNote: Note;
   createdNote: Note;
   searchID: string;
+  ID: number;
+  favorite: number;
 
   constructor(private apiService: APIServiceService, private router: Router, private messageService: MessageService) { }
 
 
   ngOnInit() {
     this.note = new Note();
-    this.getNotes();
+    if (localStorage.getItem('userID') === '') {
+      this.router.navigateByUrl('/login');
+    } else {
+      this.getNotes();
+    }
   }
 
   getNotes() {
@@ -54,7 +60,6 @@ export class NotesComponent implements OnInit {
           noteObj.Title = '*';
           noteObj.message = 'No Notes Available';
           this.notes.push(noteObj);
-          console.log(this.notes);
         }
         Swal.close();
       }
@@ -62,6 +67,8 @@ export class NotesComponent implements OnInit {
 }
 onSelect(note: Note): void {
   this.selectedNote = note;
+  this.favorite = note.favorite;
+  this.ID = note.ID;
 }
 
 
@@ -80,7 +87,7 @@ create(id: any) {
           data.message,
           'error'
         );
-        this.getNotes();
+        window.location.reload();
       }
     });
 }
@@ -97,14 +104,14 @@ delete(id: any) {
         'Deleted!',
         'success'
       );
-      this.router.navigateByUrl('/notes');
+      window.location.reload();
     } else {
       Swal.fire(
         'Failed!',
         data.message,
         'error'
       );
-      this.getNotes();
+      window.location.reload();
     }
   });
 }
@@ -122,14 +129,14 @@ update(id: any) {
           'Updated!',
           'success'
         );
-        this.getNotes();
+        window.location.reload();
       } else {
         Swal.fire(
           'Failed!',
           data.message,
           'error'
         );
-        this.getNotes();
+        window.location.reload();
       }
     });
   }
@@ -160,7 +167,6 @@ update(id: any) {
         noteObj.Title = '*';
         noteObj.message = 'No Notes Available';
         this.notes.push(noteObj);
-        console.log(this.notes);
       } else {
         this.messageService.add(data.count + ' Records Found for ' + data.results[0].Title);
       }
@@ -171,4 +177,35 @@ update(id: any) {
     }
   });
  }
+  addToFavorite() {
+    Swal.fire({
+      title: 'Loading....',
+      onOpen() {
+        Swal.showLoading();
+      }
+    }).then(
+      // tslint:disable-next-line: only-arrow-functions
+      function() {},
+      // handling the promise rejection
+      function failed(isLoggIn) {
+        if (isLoggIn === true) {
+          console.log('I was closed by the timer');
+        }
+      }
+    );
+    this.apiService.favorite(this.ID) .subscribe((data: any) => {
+      this.favorite = data['favorite'];
+      this.getNotes();
+      Swal.close();
+    });
+  }
+
+  getColor() {
+    if (this.favorite == 1) {
+      return 'red';
+    } else {
+
+      return 'white';
+    }
+  }
 }

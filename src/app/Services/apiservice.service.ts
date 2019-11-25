@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from '../Services/message.service';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,23 @@ export class APIServiceService {
     });
    }
 
+   register(user: User) {
+     const dateOdBirth = user.dateOfBirth['year'] + '-' + user.dateOfBirth['month'] + '-' + user.dateOfBirth['day'];
+     const body = JSON.stringify({    password: user.password,
+                                      title: user.title,
+                                      firstName: user.firstName,
+                                      lastName: user.lastName,
+                                      // tslint:disable-next-line: max-line-length
+                                      dateOfBirth: dateOdBirth,
+                                      gender: user.gender,
+                                      mobileNumber: user.mobileNumber,
+                                      telephoneNumber: user.telephoneNumber,
+                                      email: user.email
+                                    });
+     console.log(body);
+     return this.http.post(this.url + 'user', body);
+   }
+
    getAllNotes() {
      this.messageService.add('Message: Fetched All Notes');
      return this.http.get(this.url + 'notes/getAll/0/' + localStorage.getItem('userID'));
@@ -72,5 +90,13 @@ export class APIServiceService {
   }
      dashboardNotes() {
       return this.http.get(this.url + 'dashboard/' + localStorage.getItem('userID'));
+    }
+    favorite(id: number) {
+      return this.http.get(this.url + 'notes/favorite/' + id);
+    }
+
+    getAllFavorites() {
+      this.messageService.add('Message: Fetched All Favorite Notes');
+      return this.http.get(this.url + 'notes/getFavorite/1/' + localStorage.getItem('userID'));
     }
 }

@@ -13,4 +13,8 @@ export class TopBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  logOut() {
+    this.router.navigateByUrl('/login');
+    localStorage.clear();
+  }
 }

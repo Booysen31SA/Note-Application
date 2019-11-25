@@ -1,0 +1,53 @@
+<app-top-bar></app-top-bar>
+
+<div id="container">
+  <div id="first">
+      <h2>My Notes
+       
+          <input type="text" placeholder="Search" aria-label="Search" id ="searchBar"
+          required
+          [(ngModel)] = "note.Title">
+          <span>
+            <button (click)="search(note)">Search</button>
+          </span>
+      </h2>
+  <ul class="notes" >
+    <li *ngFor="let note of notes | paginate: { itemsPerPage: 10, currentPage: p }"
+      [class.selected]="note === selectedNote"
+      (click)="onSelect(note)">
+        <span class="badge">{{note.Title}}</span> {{note.message}}
+    </li>
+  </ul>
+  <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
+
+  <app-messages></app-messages>
+
+  </div>
+
+  <div *ngIf="selectedNote" class="body" id="second">
+      <h2 class = "detailsLabel">Details for {{selectedNote.Title | uppercase}}</h2>
+
+      <div class = "detailsBody">
+          <label class = "spanBody">Title ID:
+              <input [(ngModel)]="selectedNote.Title" placeholder="Title ID" id="IDField"/>
+            </label>
+      </div>
+
+      <div class = "detailsBody">
+        <label class = "spanBody">Mesage: </label>
+
+      </div>
+      <textarea rows="4" cols="50" [(ngModel)]="selectedNote.message" placeholder="message" id ="textAreaID"></textarea>
+      <div>
+        <button class="delete" title="Delete Note"
+        (click)="delete(selectedNote)">x</button>
+        <button class="update" title="Update Note"
+        (click)="update(selectedNote)">&#10010;</button>
+        <button class="favorite" title="Add Note to favorite"
+        (click)="addToFavorite(selectedNote)"
+        [ngStyle]="{'color':getColor()}">&#9825;</button>
+      </div>
+
+    </div>
+
+  </div>
