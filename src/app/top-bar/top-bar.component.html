@@ -3,6 +3,7 @@
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/notes">Notes</a>
   <a routerLink="/favorites">Favorites</a>
-  <a (click)="logOut()" style="float: right;margin-right: 10%;" id="logOut">Log Out</a>
+  <label style="margin-left: 1000px;">Welcome {{name  | uppercase }}  <span>&#9660;</span></label>
+  <a (click)="logOut()" style="float: right;margin-right: 16%;" id="logOut">Logout</a>
 </nav>
 <router-outlet></router-outlet>

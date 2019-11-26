@@ -39,6 +39,9 @@ export class APIServiceService {
     });
    }
 
+   getUser() {
+     return this.http.get(this.url + 'user/' + localStorage.getItem('userID'));
+   }
    register(user: User) {
      const dateOdBirth = user.dateOfBirth['year'] + '-' + user.dateOfBirth['month'] + '-' + user.dateOfBirth['day'];
      const body = JSON.stringify({    password: user.password,

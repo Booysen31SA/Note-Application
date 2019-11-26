@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { APIServiceService} from '../Services/apiservice.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,13 +10,24 @@ import {Router} from '@angular/router';
 })
 export class TopBarComponent implements OnInit {
   title = 'Note-Application';
-  constructor(private router: Router) { }
+  user: User;
+  name: string;
+
+  constructor(private router: Router, private apiService: APIServiceService) { }
 
   ngOnInit() {
+    this.getUser();
   }
 
   logOut() {
     this.router.navigateByUrl('/login');
     localStorage.clear();
+  }
+
+  getUser() {
+    this.apiService.getUser() .subscribe((data: any) => {
+      this.user = data;
+      this.name = data.results[0].firstName + ' ' + data.results[0].lastName;
+    });
   }
 }
