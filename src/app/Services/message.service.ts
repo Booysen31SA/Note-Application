@@ -8,7 +8,7 @@ export class MessageService {
 
   constructor() { }
 
-  add(message: string) {
+ add(message: string) {
 
     if (this.messages.length === 3) {
      this.clear();

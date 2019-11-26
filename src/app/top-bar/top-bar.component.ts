@@ -15,9 +15,7 @@ export class TopBarComponent implements OnInit {
   isFocused = false;
   results = [];
 
-  constructor(private router: Router, private apiService: APIServiceService) { }
-
-  items = [1,2,3,4,5,6,7,8]
+  constructor( private router: Router, private apiService: APIServiceService) { }
 
   ngOnInit() {
     this.getUser();
@@ -27,27 +25,14 @@ export class TopBarComponent implements OnInit {
     this.router.navigateByUrl('/login');
     localStorage.clear();
   }
+  profile() {
+    this.router.navigateByUrl('/profile');
+  }
 
   getUser() {
     this.apiService.getUser() .subscribe((data: any) => {
       this.user = data;
       this.name = data.results[0].firstName + ' ' + data.results[0].lastName;
     });
-  }
-
-  onFocus() {
-      this.isFocused = true;
-  }
-
-  onBlur() {
-    this.isFocused = false;
-  }
-
-  selectItem(value) {
-    this.results = [...this.results, value];
-  }
-
-  pressEnter(value) {
-    // add value to result
   }
 }
