@@ -12,8 +12,12 @@ export class TopBarComponent implements OnInit {
   title = 'Note-Application';
   user: User;
   name: string;
+  isFocused = false;
+  results = [];
 
   constructor(private router: Router, private apiService: APIServiceService) { }
+
+  items = [1,2,3,4,5,6,7,8]
 
   ngOnInit() {
     this.getUser();
@@ -29,5 +33,21 @@ export class TopBarComponent implements OnInit {
       this.user = data;
       this.name = data.results[0].firstName + ' ' + data.results[0].lastName;
     });
+  }
+
+  onFocus() {
+      this.isFocused = true;
+  }
+
+  onBlur() {
+    this.isFocused = false;
+  }
+
+  selectItem(value) {
+    this.results = [...this.results, value];
+  }
+
+  pressEnter(value) {
+    // add value to result
   }
 }

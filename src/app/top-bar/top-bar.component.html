@@ -3,7 +3,17 @@
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/notes">Notes</a>
   <a routerLink="/favorites">Favorites</a>
-  <label style="margin-left: 1000px;">Welcome {{name  | uppercase }}  <span>&#9660;</span></label>
-  <a (click)="logOut()" style="float: right;margin-right: 16%;" id="logOut">Logout</a>
+  <div class="btn-group" style="float: right; margin-right: 50px;">
+      <button type="button" class="btn btn-secondary">Welcome {{name  | uppercase }}</button>
+      <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Profile</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <hr>
+        <a class="dropdown-item"(click)="logOut()">Logout</a>
+      </div>
+    </div>
 </nav>
+
 <router-outlet></router-outlet>
