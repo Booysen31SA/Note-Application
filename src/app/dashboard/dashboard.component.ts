@@ -18,9 +18,25 @@ export class DashboardComponent implements OnInit {
     if (localStorage.getItem('userID') === '') {
       this.router.navigateByUrl('/login');
     } else {
-    this.dashboardNotes();
+      if (localStorage.getItem('flag') === 'true') {
+        this.userCheck();
+      }
+      this.dashboardNotes();
     }
   }
+  userCheck() {
+    this.apiService.getTokenValue() .subscribe((data: any) => {
+      if (data.message.token !== localStorage.getItem('Token')) {
+        localStorage.setItem('flag', 'true');
+        Swal.fire(
+          'Warning!',
+          'You have logged in elsewhere'
+        );
+        this.router.navigateByUrl('/login');
+      }
+    });
+  }
+
 
   dashboardNotes() {
     Swal.fire({

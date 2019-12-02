@@ -22,10 +22,28 @@ export class ProfileComponent implements OnInit {
   constructor(private apiService: APIServiceService, private router: Router) { }
 
   ngOnInit() {
-    this.getProfile();
+
     if (localStorage.getItem('userID') === null) {
       this.router.navigateByUrl('/login');
+    } else {
+      if (localStorage.getItem('flag') === 'true') {
+        this.userCheck();
+      }
+      this.getProfile();
     }
+  }
+
+  userCheck() {
+    this.apiService.getTokenValue() .subscribe((data: any) => {
+      if (data.message.token !== localStorage.getItem('Token')) {
+        localStorage.setItem('flag', 'true');
+        Swal.fire(
+          'Warning!',
+          'You have logged in elsewhere'
+        );
+        this.router.navigateByUrl('/login');
+      }
+    });
   }
   getProfile() {
     this.apiService.getUser() .subscribe((data: any) => {

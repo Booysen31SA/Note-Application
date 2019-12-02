@@ -34,9 +34,7 @@ export class APIServiceService {
 
    getTokenValue() {
     const body = JSON.stringify({userId: this.userID});
-    return this.http.post(this.url + 'auth/token', body).subscribe((data: any) => {
-      localStorage.setItem('Token', data.message.token);
-    });
+    return this.http.post(this.url + 'auth/token', body);
    }
 
    getUser() {
