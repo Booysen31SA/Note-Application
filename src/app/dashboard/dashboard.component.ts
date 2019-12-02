@@ -28,10 +28,7 @@ export class DashboardComponent implements OnInit {
     this.apiService.getTokenValue() .subscribe((data: any) => {
       if (data.message.token !== localStorage.getItem('Token')) {
         localStorage.setItem('flag', 'true');
-        Swal.fire(
-          'Warning!',
-          'You have logged in elsewhere'
-        );
+        alert('You have logged in elsewhere');
         this.router.navigateByUrl('/login');
       }
     });

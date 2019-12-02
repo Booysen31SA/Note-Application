@@ -29,11 +29,7 @@ export class LoginComponent implements OnInit {
   }
   flagCheck() {
     if (localStorage.getItem('flag') === 'true') {
-      console.log(localStorage.getItem('flag'), 'flagCheck');
-      Swal.fire(
-        'Warning!',
-        'You have logged in elsewhere'
-      );
+      alert('You have logged in elsewhere');
     }
   }
 
