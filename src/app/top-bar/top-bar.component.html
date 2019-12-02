@@ -4,7 +4,7 @@
   <a routerLink="/notes">Notes</a>
   <a routerLink="/favorites">Favorites</a>
   <div class="btn-group" style="float: right; margin-right: 50px;">
-      <button type="button" class="btn btn-secondary" (click)="profile()">Welcome {{name  | uppercase }}</button>
+      <button type="button" class="btn btn-secondary" data-toggle="dropdown">Welcome {{name  | uppercase }}</button>
       <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
       </button>
       <div class="dropdown-menu">
