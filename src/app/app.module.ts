@@ -27,7 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
     NoteDetailComponent,
     RegistrationComponent,
     FavoritesComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

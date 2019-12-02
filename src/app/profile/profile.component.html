@@ -3,3 +3,125 @@
   <h1>Edit Profile - {{fname | uppercase }} {{ lname | uppercase }}</h1>
 </div>
 
+<div class="cotainer">
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header">Update</div>
+                  <div class="card-body">
+
+                            <div class="form-group row">
+                              <label for="userId" class="col-md-4 col-form-label text-md-right">User ID</label>
+                              <div class="col-md-6">
+                                  <input type="text" id="userId" class="form-control" name="userId" placeholder="user ID"
+                                  required
+                                  [(ngModel)]="user.userId"
+                                  readonly>
+                              </div>
+                          </div>
+
+                          <div class="form-group row">
+                              <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                              <div class="col-md-6">
+                                  <input type="text" id="email_address" class="form-control" name="email-address" placeholder="E-Mail Address"
+                                  required
+                                  [(ngModel)]="user.email">
+                              </div>
+                          </div>
+
+                          <div class="form-group row">
+                              <label for="first_name" class="col-md-4 col-form-label text-md-right">First name</label>
+                              <div class="col-md-6">
+                                  <input type="text" id="first_name" class="form-control" name="first_name" placeholder="First Name"
+                                  required
+                                  [(ngModel)]="user.firstName">
+                              </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="last_name" class="col-md-4 col-form-label text-md-right">Last name</label>
+                            <div class="col-md-6">
+                                <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last Name"
+                                required
+                                [(ngModel)]="user.lastName">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
+                          <div class="col-md-6">
+                              <select name="cars" id="title" class="form-control" name="title" placeholder="Please Select"
+                              required
+                              [(ngModel)]="user.title">
+                                <option value="mr">MR</option>
+                                <option value="mrs">MRS</option>
+                                <option value="miss">Miss</option>
+                              </select>
+                          </div>
+                      </div>
+<!--
+                      <div class="form-group row">
+                        <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">Date Of Birth</label>
+                        <div class="col-md-6">
+                                <input class="form-control" placeholder="yyyy-mm-dd"
+                                       name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"
+                                       required
+                                       [(ngModel)]="user.dateOfBirth">
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary fa fa-calendar" style="font-size:20px" (click)="d.toggle()" type="button"></button>
+                        </div>
+
+                    </div> -->
+
+                    <div class="form-group row">
+                      <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
+                      <div class="col-md-6">
+                          <select name="cars" id="title" class="form-control" name="title"
+                          required
+                          [(ngModel)]="user.gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="rns">Rather not say</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                      <div class="col-md-6">
+                          <input type="text" id="phone_number" class="form-control" name="phone_number" placeholder="Phone Number"
+                          required
+                          [(ngModel)]="user.mobileNumber">
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="telephone_number" class="col-md-4 col-form-label text-md-right">Telephone Number</label>
+                    <div class="col-md-6">
+                        <input type="text" id="telephone_number" class="form-control" name="telephone_number" placeholder="Telephone Number"
+                        required
+                        [(ngModel)]="user.telephoneNumber">
+                    </div>
+                </div>
+<!--
+                <div class="form-group row">
+                  <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                  <div class="col-md-6">
+                      <input type="text" id="password" class="form-control" name="password" placeholder="password"
+                      required
+                      [(ngModel)]="user.password">
+                  </div>
+              </div> -->
+
+                              <div class="col-md-6 offset-md-4">
+                                  <button type="submit" class="btn btn-primary">
+                                  Update
+                                  </button>
+
+                              </div>
+                  </div>
+              </div>
+      </div>
+  </div>
+

@@ -12,6 +12,10 @@ export class ProfileComponent implements OnInit {
   user: User;
   fname: string;
   lname: string;
+  model;
+  date: {year: number, month: number};
+  password: string;
+  confirm: string;
 
   constructor(private apiService: APIServiceService) { }
 
@@ -23,6 +27,7 @@ export class ProfileComponent implements OnInit {
       this.user = data.results[0];
       this.fname = this.user.firstName;
       this.lname = this.user.lastName;
+      this.model = this.user.dateOfBirth;
     });
   }
 }
