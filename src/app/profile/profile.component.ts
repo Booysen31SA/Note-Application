@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { APIServiceService} from '../Services/apiservice.service';
 import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -18,10 +19,13 @@ export class ProfileComponent implements OnInit {
   password: string;
   confirm: string;
 
-  constructor(private apiService: APIServiceService) { }
+  constructor(private apiService: APIServiceService, private router: Router) { }
 
   ngOnInit() {
     this.getProfile();
+    if (localStorage.getItem('userID') === null) {
+      this.router.navigateByUrl('/login');
+    }
   }
   getProfile() {
     this.apiService.getUser() .subscribe((data: any) => {
