@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EmbeddedViewRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from '../Services/message.service';
 import { User } from '../models/user';
@@ -41,6 +41,20 @@ export class APIServiceService {
 
    getUser() {
      return this.http.get(this.url + 'user/' + localStorage.getItem('userID'));
+   }
+
+   updateUser(user) {
+    const body = JSON.stringify({
+                                   title: user.title,
+                                   firstName: user.firstName,
+                                   lastName: user.lastName,
+                                   // tslint:disable-next-line: max-line-length
+                                   gender: user.gender,
+                                   mobileNumber: user.mobileNumber,
+                                   telephoneNumber: user.telephoneNumber,
+                                   email: user.email
+    });
+    return this.http.post(this.url + 'user/' + user.userId, body);
    }
    register(user: User) {
      const dateOdBirth = user.dateOfBirth['year'] + '-' + user.dateOfBirth['month'] + '-' + user.dateOfBirth['day'];
