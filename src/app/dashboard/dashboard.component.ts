@@ -44,7 +44,6 @@ export class DashboardComponent implements OnInit {
          for (let i in data.results) {
            this.notes.push(data.results[i].Title);
          }
-         console.log(this.notes);
          Swal.close();
     });
   }
