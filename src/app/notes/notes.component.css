@@ -100,33 +100,43 @@ button:hover {
 
 button.delete {
   position: relative;
-  left: 10px;
+  left: -45px;
   top: -4px;
   background-color: gray !important;
   color: white;
   float: right;
   margin-right: 20px;
-  width: 140px;
+  width: 125px;
 }
 button.update {
   position: relative;
-  left: 40px;
+  left: -8px;
   top: -4px;
   background-color: gray !important;
   color: white;
   float: right;
   margin-right: 38px;
-  width: 140px;
+  width: 125px;
 }
 button.favorite{
   position: relative;
-  left: 40px;
+  left: 1px;
   top: -4px;
   background-color: gray !important;
   color: white;
   float: right;
   margin-right: 10px;
-  width: 140px;
+  width: 125px;
+}
+button.share{
+  position: relative;
+  left: 10px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  float: right;
+  margin-right: 10px;
+  width: 125px;
 }
 #textAreaID{
   margin-left: 10px;

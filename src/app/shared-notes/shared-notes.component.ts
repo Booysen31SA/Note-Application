@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIServiceService} from '../Services/apiservice.service';
-import { Note } from '../models/note';
+import { ShareNotes } from '../models/shareNotes';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 import { MessageService } from '../Services/message.service';
@@ -16,16 +16,16 @@ export class SharedNotesComponent implements OnInit {
   message: string;
   p = 1;
   notes = [];
-  note: Note;
-  selectedNote: Note;
-  createdNote: Note;
+  shareNotes: ShareNotes;
+  selectedNote: ShareNotes;
+  createdNote: ShareNotes;
   searchID: string;
   ID: number;
 
   constructor(private apiService: APIServiceService, private router: Router, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.note = new Note();
+    this.shareNotes = new ShareNotes();
     if (localStorage.getItem('userID') === '') {
       this.router.navigateByUrl('/login');
     } else {
@@ -36,7 +36,7 @@ export class SharedNotesComponent implements OnInit {
     }
   }
 
-  onSelect(note: Note): void {
+  onSelect(note: ShareNotes): void {
     this.selectedNote = note;
     this.ID = note.ID;
   }
@@ -50,7 +50,36 @@ export class SharedNotesComponent implements OnInit {
 
   update(id: any) {}
 
-  getNotes() {}
+  getNotes() {
+    Swal.fire({
+      title: 'Getting Your Notes....',
+      onOpen() {
+        Swal.showLoading();
+      }
+    }).then(
+      // tslint:disable-next-line: only-arrow-functions
+      function() {},
+      // handling the promise rejection
+      function failed(isLoggIn) {
+        if (isLoggIn === true) {
+          console.log('I was closed by the timer');
+        }
+      }
+    );
+    this.apiService.getAllSharedNotes() .subscribe((data: any) => {
+      const noteObj = new ShareNotes();
+
+      this.notes = data.results;
+      if (data.success) {
+        if (data.count === 0) {
+          noteObj.ID = 0;
+          noteObj.admin = 'No Notes Available';
+          this.notes.push(noteObj);
+        }
+        Swal.close();
+      }
+    });
+  }
 
   userCheck() {
     this.apiService.getTokenValue() .subscribe((data: any) => {

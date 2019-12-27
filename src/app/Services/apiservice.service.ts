@@ -114,4 +114,10 @@ export class APIServiceService {
       this.messageService.add('Message: Fetched All Favorite Notes');
       return this.http.get(this.url + 'notes/getFavorite/1/' + localStorage.getItem('userID'));
     }
+
+    //share Notes
+    getAllSharedNotes() {
+      this.messageService.add('Message: Fetched All Notes');
+      return this.http.get(this.url + 'share/getAll/0/' + localStorage.getItem('userID'));
+    }
 }

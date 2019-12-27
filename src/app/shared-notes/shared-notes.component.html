@@ -6,16 +6,16 @@
 
           <input type="text" placeholder="Search" aria-label="Search" id ="searchBar"
           required
-          [(ngModel)] = "note.Title">
+          [(ngModel)] = "shareNotes.ID">
           <span>
-            <button (click)="search(note)">Search</button>
+            <button (click)="search(shareNotes)">Search</button>
           </span>
       </h2>
   <ul class="notes" >
     <li *ngFor="let note of notes | paginate: { itemsPerPage: 10, currentPage: p }"
       [class.selected]="note === selectedNote"
       (click)="onSelect(note)">
-        <span class="badge">{{note.Title}}</span> {{note.message}}
+        <span class="badge">{{note.ID}}</span> {{note.admin}}
     </li>
   </ul>
   <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
@@ -25,11 +25,11 @@
   </div>
 
   <div *ngIf="selectedNote" class="body" id="second">
-      <h2 class = "detailsLabel">Details for {{selectedNote.Title | uppercase}}</h2>
+      <h2 class = "detailsLabel">Details for {{selectedNote.ID | uppercase}}</h2>
 
       <div class = "detailsBody">
           <label class = "spanBody">Title ID:
-              <span><label class = "detailsLabel"></label> </span> {{selectedNote.Title}}
+              <span><label class = "detailsLabel"></label> </span> {{selectedNote.ID}}
             </label>
       </div>
 
@@ -37,7 +37,7 @@
         <label class = "spanBody">Mesage: </label>
 
       </div>
-      <textarea rows="4" cols="50" [(ngModel)]="selectedNote.message" placeholder="message" id ="textAreaID"></textarea>
+      <textarea rows="4" cols="50" [(ngModel)]="selectedNote.admin" placeholder="message" id ="textAreaID"></textarea>
       <div>
         <button class="delete" title="Delete Note"
         (click)="delete(selectedNote)">x</button>
@@ -67,13 +67,15 @@
               <label for="Title" class="col-form-label">Title:</label>
               <input type="text" class="form-control" id="Title"
               required
-              [(ngModel)] = note.Title name = "Title">
+              [(ngModel)] = shareNotes.ID name = "Title">
             </div>
             <div class="form-group">
               <label for="message" class="col-form-label">Message:</label>
               <textarea class="form-control" id="message"
               required
-              [(ngModel)] = "note.message" name = "message"></textarea>
+              [(ngModel)] = "shareNotes.admin" name = "message"></textarea>
+            </div>
+            <div>
             </div>
           </form>
           </div>
@@ -81,7 +83,7 @@
           <!-- Modal footer -->
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="create(note)">Save changes</button>
+            <button type="button" class="btn btn-primary" (click)="create(shareNotes)">Save changes</button>
           </div>
 
         </div>
