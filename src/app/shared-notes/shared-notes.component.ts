@@ -4,6 +4,7 @@ import { ShareNotes } from '../models/shareNotes';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 import { MessageService } from '../Services/message.service';
+import { Note } from '../models/note';
 
 @Component({
   selector: 'app-shared-notes',
@@ -17,7 +18,7 @@ export class SharedNotesComponent implements OnInit {
   p = 1;
   notes = [];
   shareNotes: ShareNotes;
-  selectedNote: ShareNotes;
+  selectedNote: Note;
   createdNote: ShareNotes;
   searchID: string;
   ID: number;
@@ -69,8 +70,10 @@ export class SharedNotesComponent implements OnInit {
     this.apiService.getAllSharedNotes() .subscribe((data: any) => {
       const noteObj = new ShareNotes();
 
-      this.notes = data.results;
       if (data.success) {
+        this.apiService.getAllNotes() .subscribe((Notedata: any) => {
+          this.notes = Notedata.results;
+        });
         if (data.count === 0) {
           noteObj.ID = 0;
           noteObj.admin = 'No Notes Available';
