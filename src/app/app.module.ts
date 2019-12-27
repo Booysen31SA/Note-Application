@@ -15,6 +15,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SharedNotesComponent } from './shared-notes/shared-notes.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProfileComponent } from './profile/profile.component';
     RegistrationComponent,
     FavoritesComponent,
     ProfileComponent,
+    SharedNotesComponent,
   ],
   imports: [
     BrowserModule,

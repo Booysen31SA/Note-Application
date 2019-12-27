@@ -1,0 +1,164 @@
+h2{
+  margin-left: 50px;
+}
+.notes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 250px;
+  margin-left: 40px;
+}
+.notes li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: 10px;
+  padding: 4px 0 0 0;
+  height: 30px;
+  border-radius: 4px;
+  width: 500px;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.notes li:hover {
+  color: #039be5;
+  background-color: #DDD;
+  /* left: 50px; */
+}
+.notes li.selected {
+  background-color: #CFD8DC;
+  color: white;
+}
+.notes li.selected:hover {
+  background-color: #BBD8DC;
+  color: white;
+}
+.notes .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#405061;
+  line-height: 10px;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 30px;
+  width: 100px;
+  margin-right: 10px;
+  border-radius: 4px 0 0 4px;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#container{
+  width: 100%;
+  /* background-color: #ffcc33; */
+}
+
+#first {
+  float: left;
+  width: 550px;
+}
+#second {
+  float: left;
+  /* background-color: green; */
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.detailsBody{
+  margin-left: 50px;
+  /* position: relative; */
+  left: 0;
+  background-color: #EEE;
+  margin: 10px;
+  padding: 4px 0 0 0;
+  height: 30px;
+  border-radius: 4px;
+  max-width: 500px;
+}
+.spanBody{
+  padding-right: 20px;
+  max-width: 500px;
+}
+button {
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+}
+
+button:hover {
+  background-color: #cfd8dc;
+}
+
+button.delete {
+  position: relative;
+  left: 10px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  float: right;
+  margin-right: 20px;
+  width: 140px;
+}
+button.update {
+  position: relative;
+  left: 40px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  float: right;
+  margin-right: 38px;
+  width: 140px;
+}
+button.favorite{
+  position: relative;
+  left: 40px;
+  top: -4px;
+  background-color: gray !important;
+  color: white;
+  float: right;
+  margin-right: 10px;
+  width: 140px;
+}
+#textAreaID{
+  margin-left: 10px;
+  width: 500px;
+  height: 308px;
+}
+.detailsLabel{
+  margin-left: 10px;
+}
+#IDField {
+  width: 445px;
+}
+
+@media only screen and (max-width: 1068px) {
+  .body {
+    margin-left: 35px;
+  }
+}
+.my-pagination{
+  text-align: center;
+}
+
+#addBTN{
+/* float: right; */
+margin-top: -5px;
+/* border-radius: 50%; */
+}
+#searchBar{
+  width: 30%;
+  margin-left: 60px;
+  height: 15%;
+}
+#searchBtn{
+  float: right;
+}
