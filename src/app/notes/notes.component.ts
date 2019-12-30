@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 import { MessageService } from '../Services/message.service';
 import { ShareNotes } from '../models/shareNotes';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-notes',
