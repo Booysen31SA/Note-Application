@@ -4,6 +4,7 @@ import { Note } from '../models/note';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 import { MessageService } from '../Services/message.service';
+import { ShareNotes } from '../models/shareNotes';
 
 @Component({
   selector: 'app-notes',
@@ -22,6 +23,10 @@ export class NotesComponent implements OnInit {
   searchID: string;
   ID: number;
   favorite: number;
+
+  ShareValues: ShareNotes;
+  ShareWith: string;
+  access: string;
 
   constructor(private apiService: APIServiceService, private router: Router, private messageService: MessageService) { }
 
@@ -219,5 +224,22 @@ update(id: any) {
 
       return 'white';
     }
+  }
+
+  createShareNote() {
+    this.apiService.createShareNote(this.ShareWith, this.selectedNote.ID, this.access ) .subscribe((data: any) => {
+      console.log(data);
+      if (data.success) {
+        Swal.fire(
+          data.done,
+          data.message + ' ' + data.shareWith
+        );
+      } else {
+        Swal.fire(
+          'Failed',
+          data.message
+        );
+      }
+    });
   }
 }

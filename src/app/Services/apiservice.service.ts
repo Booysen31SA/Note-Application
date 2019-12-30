@@ -120,4 +120,13 @@ export class APIServiceService {
       this.messageService.add('Message: Fetched All Notes');
       return this.http.get(this.url + 'share/getAll/0/' + localStorage.getItem('userID'));
     }
+
+    createShareNote(userID: string, id: number, accessRights: string) {
+      const body = JSON.stringify({	userId: userID,
+                                    ID: id,
+                                    admin: localStorage.getItem('userID'),
+                                    accessRight: accessRights.trim()});
+      console.log(accessRights.trim());
+      return this.http.post(this.url + 'share', body);
+    }
 }

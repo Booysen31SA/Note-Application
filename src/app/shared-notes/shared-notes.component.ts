@@ -37,7 +37,7 @@ export class SharedNotesComponent implements OnInit {
     }
   }
 
-  onSelect(note: ShareNotes): void {
+  onSelect(note: Note): void {
     this.selectedNote = note;
     this.ID = note.ID;
   }
@@ -70,6 +70,7 @@ export class SharedNotesComponent implements OnInit {
     this.apiService.getAllSharedNotes() .subscribe((data: any) => {
       const noteObj = new ShareNotes();
 
+      console.log(data);
       if (data.success) {
         this.apiService.getAllNotes() .subscribe((Notedata: any) => {
           this.notes = Notedata.results;
