@@ -4,6 +4,7 @@ import { Note } from '../models/note';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 import { MessageService } from '../Services/message.service';
+import { ShareNotes } from '../models/shareNotes';
 
 @Component({
   selector: 'app-notes',
@@ -23,6 +24,10 @@ export class NotesComponent implements OnInit {
   ID: number;
   favorite: number;
 
+  ShareValues: ShareNotes;
+  ShareWith: string;
+  access: string;
+
   constructor(private apiService: APIServiceService, private router: Router, private messageService: MessageService) { }
 
 
@@ -31,10 +36,22 @@ export class NotesComponent implements OnInit {
     if (localStorage.getItem('userID') === '') {
       this.router.navigateByUrl('/login');
     } else {
+      if (localStorage.getItem('flag') === 'true') {
+        this.userCheck();
+      }
       this.getNotes();
     }
   }
 
+  userCheck() {
+    this.apiService.getTokenValue() .subscribe((data: any) => {
+      if (data.message.token !== localStorage.getItem('Token')) {
+        localStorage.setItem('flag', 'true');
+        alert('You have logged in elsewhere');
+        this.router.navigateByUrl('/login');
+      }
+    });
+  }
   getNotes() {
     Swal.fire({
       title: 'Getting Your Notes....',
@@ -207,5 +224,22 @@ update(id: any) {
 
       return 'white';
     }
+  }
+
+  createShareNote() {
+    this.apiService.createShareNote(this.ShareWith, this.selectedNote.ID, this.access ) .subscribe((data: any) => {
+      console.log(data);
+      if (data.success) {
+        Swal.fire(
+          data.done,
+          data.message + ' ' + data.shareWith
+        );
+      } else {
+        Swal.fire(
+          'Failed',
+          data.message
+        );
+      }
+    });
   }
 }

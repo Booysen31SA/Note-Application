@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EmbeddedViewRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from '../Services/message.service';
 import { User } from '../models/user';
@@ -34,11 +34,26 @@ export class APIServiceService {
 
    getTokenValue() {
     const body = JSON.stringify({userId: this.userID});
-    return this.http.post(this.url + 'auth/token', body).subscribe((data: any) => {
-      localStorage.setItem('Token', data.message.token);
-    });
+    return this.http.post(this.url + 'auth/token', body);
    }
 
+   getUser() {
+     return this.http.get(this.url + 'user/' + localStorage.getItem('userID'));
+   }
+
+   updateUser(user) {
+    const body = JSON.stringify({
+                                   title: user.title,
+                                   firstName: user.firstName,
+                                   lastName: user.lastName,
+                                   // tslint:disable-next-line: max-line-length
+                                   gender: user.gender,
+                                   mobileNumber: user.mobileNumber,
+                                   telephoneNumber: user.telephoneNumber,
+                                   email: user.email
+    });
+    return this.http.post(this.url + 'user/' + user.userId, body);
+   }
    register(user: User) {
      const dateOdBirth = user.dateOfBirth['year'] + '-' + user.dateOfBirth['month'] + '-' + user.dateOfBirth['day'];
      const body = JSON.stringify({    password: user.password,
@@ -98,5 +113,24 @@ export class APIServiceService {
     getAllFavorites() {
       this.messageService.add('Message: Fetched All Favorite Notes');
       return this.http.get(this.url + 'notes/getFavorite/1/' + localStorage.getItem('userID'));
+    }
+
+    //share Notes
+    getAllSharedNotes() {
+      this.messageService.add('Message: Fetched All Notes');
+      return this.http.get(this.url + 'share/getAll/0/' + localStorage.getItem('userID'));
+    }
+
+    createShareNote(userID: string, id: number, accessRights: string) {
+      const body = JSON.stringify({	userId: userID,
+                                    ID: id,
+                                    admin: localStorage.getItem('userID'),
+                                    accessRight: accessRights.trim()});
+      console.log(accessRights.trim());
+      return this.http.post(this.url + 'share', body);
+    }
+
+    getNoteSearch(id: number) {
+      return this.http.get(this.url + 'notes/' + id);
     }
 }

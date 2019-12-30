@@ -25,8 +25,21 @@ export class NoteDetailComponent implements OnInit {
     if (localStorage.getItem('userID') === '') {
       this.router.navigateByUrl('/login');
     } else {
+      if (localStorage.getItem('flag') === 'true') {
+        this.userCheck();
+      }
       this.getNote();
     }
+  }
+
+  userCheck() {
+    this.noteService.getTokenValue() .subscribe((data: any) => {
+      if (data.message.token !== localStorage.getItem('Token')) {
+        localStorage.setItem('flag', 'true');
+        alert('You have logged in elsewhere');
+        this.router.navigateByUrl('/login');
+      }
+    });
   }
 
   getNote(): void {

@@ -14,6 +14,8 @@ import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SharedNotesComponent } from './shared-notes/shared-notes.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
     MessagesComponent,
     NoteDetailComponent,
     RegistrationComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    ProfileComponent,
+    SharedNotesComponent,
   ],
   imports: [
     BrowserModule,

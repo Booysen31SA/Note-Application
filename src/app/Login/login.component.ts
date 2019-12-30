@@ -25,6 +25,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.user = new UserLogin();
     this.userId = localStorage.getItem('userId');
+    this.flagCheck();
+  }
+  flagCheck() {
+    if (localStorage.getItem('flag') === 'true') {
+      alert('You have logged in elsewhere');
+    }
   }
 
   submit(user) {
@@ -49,6 +55,7 @@ export class LoginComponent implements OnInit {
       this.isLoggIn = data.success;
 
       if (this.isLoggIn) {
+        localStorage.setItem('Token', data.message.token);
         this.token = data.message.token;
         this.recievedData = data;
         localStorage.setItem('Token', data.message.token);

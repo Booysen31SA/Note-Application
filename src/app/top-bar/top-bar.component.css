@@ -36,3 +36,19 @@ nav a.active {
 #logOut{
   cursor: pointer;
 }
+
+.dropdown-container {
+  width: 300px;
+}
+.items-container {
+  width:100%;
+  background-color: gray;
+}
+.item {
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer
+}
+.item:hover {
+  background-color: brown
+}

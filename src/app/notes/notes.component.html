@@ -31,7 +31,7 @@
 
     <div class = "detailsBody">
         <label class = "spanBody">Title ID:
-            <input [(ngModel)]="selectedNote.Title" placeholder="Title ID" id="IDField"/>
+            <span><label class = "detailsLabel"></label> </span> {{selectedNote.Title}}
           </label>
     </div>
 
@@ -48,6 +48,7 @@
       <button class="favorite" title="Add Note to favorite"
       (click)="addToFavorite(selectedNote)"
       [ngStyle]="{'color':getColor()}">&#9825;</button>
+      <button class="share" title="Share Note" data-toggle="modal" data-target="#SharemyModal">Share</button>
     </div>
 
   </div>
@@ -92,3 +93,52 @@
       </div>
     </div>
   </div>
+
+  <!-- The Modal -->
+<div class="modal" id="SharemyModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Sharing notes</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form>
+        <div class="form-group">
+          <label for="Title" class="col-form-label">Title: {{selectedNote.Title | uppercase }}</label>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="col-form-label">Share With:</label>
+          <input type="text" class="form-control" id="ShareWith"
+          required
+          [(ngModel)] = ShareWith name = "Title">
+        </div>
+
+        <div class="form-group row">
+          <label for="message" class="col-md-4 col-form-label text-md-right">Access Rights: </label>
+          <div class="col-md-6">
+              <select name="cars" id="title" class="form-control" name="access"
+              required
+              [(ngModel)]="access">
+                <option value="READ">READ</option>
+                <option value="READANDWRITE">READ AND WRITE</option>
+              </select>
+          </div>
+      </div>
+      </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="createShareNote()">Save changes</button>
+      </div>
+
+    </div>
+  </div>
+</div>

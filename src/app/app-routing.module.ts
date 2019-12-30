@@ -7,6 +7,8 @@ import { NotesComponent } from './notes/notes.component';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SharedNotesComponent } from './shared-notes/shared-notes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'detail/:id', component: NoteDetailComponent },
   { path: 'notes', component: NotesComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'favorites', component: FavoritesComponent }
+  { path: 'favorites', component: FavoritesComponent },
+  { path: 'profile', component: ProfileComponent},
+  { path: 'share', component: SharedNotesComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,29 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
-import { Note } from '../models/note';
+import { User } from '../models/user';
 import { APIServiceService} from '../Services/apiservice.service';
+import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
-  notes: Note[] = [];
+  user: User;
+  fname: string;
+  lname: string;
+  model;
+  date: {year: number, month: number};
+  password: string;
+  confirm: string;
+
   constructor(private apiService: APIServiceService, private router: Router) { }
 
   ngOnInit() {
-    if (localStorage.getItem('userID') === '') {
+
+    if (localStorage.getItem('userID') === null) {
       this.router.navigateByUrl('/login');
     } else {
       if (localStorage.getItem('flag') === 'true') {
         this.userCheck();
       }
-      this.dashboardNotes();
+      this.getProfile();
     }
   }
+
   userCheck() {
     this.apiService.getTokenValue() .subscribe((data: any) => {
       if (data.message.token !== localStorage.getItem('Token')) {
@@ -33,12 +42,18 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
-
-  dashboardNotes() {
+  getProfile() {
+    this.apiService.getUser() .subscribe((data: any) => {
+      this.user = data.results[0];
+      this.fname = this.user.firstName;
+      this.lname = this.user.lastName;
+      this.model = this.user.dateOfBirth;
+    });
+  }
+  updateProfile() {
     Swal.fire({
-      title: 'Loading....',
-      onOpen: function () {
+      title: 'Updating....',
+      onOpen() {
         Swal.showLoading();
       }
     }).then(
@@ -51,13 +66,19 @@ export class DashboardComponent implements OnInit {
         }
       }
     );
-    this.apiService.dashboardNotes() .subscribe((data: any) => {
-
-         // tslint:disable-next-line: forin
-         for (let i in data.results) {
-           this.notes.push(data.results[i].Title);
-         }
-         Swal.close();
-    });
+    this.apiService.updateUser(this.user) . subscribe((data: any) => {
+      if (data.success) {
+        Swal.close();
+        Swal.fire(
+          'Updated!',
+           data.message
+        );
+      } else {
+        Swal.fire(
+          'Failed!',
+           data.message
+        );
+      }
+   });
   }
 }
