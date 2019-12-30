@@ -129,4 +129,8 @@ export class APIServiceService {
       console.log(accessRights.trim());
       return this.http.post(this.url + 'share', body);
     }
+
+    getNoteSearch(id: number) {
+      return this.http.get(this.url + 'notes/' + id);
+    }
 }

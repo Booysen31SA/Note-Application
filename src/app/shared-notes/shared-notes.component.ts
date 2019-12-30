@@ -72,9 +72,12 @@ export class SharedNotesComponent implements OnInit {
 
       console.log(data);
       if (data.success) {
-        this.apiService.getAllNotes() .subscribe((Notedata: any) => {
-          this.notes = Notedata.results;
-        });
+        const count = data.count;
+        for (let i = 0; i < count; i++) {
+          this.apiService.getNoteSearch(data.results[i].ID) .subscribe((Notedata: any) => {
+            this.notes.push(Notedata.results[0]);
+          });
+        }
         if (data.count === 0) {
           noteObj.ID = 0;
           noteObj.admin = 'No Notes Available';
