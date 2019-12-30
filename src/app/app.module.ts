@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -38,6 +39,7 @@ import { SharedNotesComponent } from './shared-notes/shared-notes.component';
     AppRoutingModule,
     NgxPaginationModule,
     NgbModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

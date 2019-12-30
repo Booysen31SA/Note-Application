@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { APIServiceService} from '../Services/apiservice.service';
 import { ShareNotes } from '../models/shareNotes';
 import Swal from 'sweetalert2';
